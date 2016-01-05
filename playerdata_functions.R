@@ -13,7 +13,7 @@ createPlayerURL <- function(id){
 #dataframe is still present but is now separate from these three components
 #(to avoid repeats). 
 getPlayerHistoryList <- function(url){
-  player_data <- fromJSON(readLines(url))
+  player_data <- suppressWarnings(fromJSON(readLines(url)))
   
   player_df <- as.data.frame(player_data$fixture_history$all)
   
@@ -38,7 +38,7 @@ getPlayerHistoryList <- function(url){
 #necessary information for a particular player. NOTE: Name, team, and 
 #position are each given their column so they repeat for every round. 
 getPlayerHistoryDF <- function(url){
-  player_data <- fromJSON(readLines(url))
+  player_data <- suppressWarnings(fromJSON(readLines(url)))
   
   player_df <- as.data.frame(player_data$fixture_history$all)
   
